@@ -12,9 +12,9 @@ public class CodiceFiscale extends JFrame implements ActionListener {
     JRadioButton m, f;
     JButton genera;
     ButtonGroup mf;
-    String mesi[] = {"Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"};
+    String mesi[] = {"", "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"};
 
-    CodiceFiscaleGUI() {
+    CodiceFiscale() {
         super("Codice Fiscale");
 
         lCognome = new JLabel("Cognome");
@@ -96,6 +96,63 @@ public class CodiceFiscale extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+
+        if (tfCognome.getText().equals("")) {
+            JOptionPane optionPane = new JOptionPane("Non hai inserito il cognome!",JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Attenzione!");
+            dialog.setAlwaysOnTop(true); // mostra il dialogo sopra le altre finestre
+            dialog.setVisible(true); // rende visibile il dialogo
+            return;
+        }
+
+        if (tfNome.getText().equals("")) {
+            JOptionPane optionPane = new JOptionPane("Non hai inserito il nome!",JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Attenzione!");
+            dialog.setAlwaysOnTop(true); // mostra il dialogo sopra le altre finestre
+            dialog.setVisible(true); // rende visibile il dialogo
+            return;
+        }
+
+        if (!m.isSelected() && !f.isSelected()) {
+            JOptionPane optionPane = new JOptionPane("Non hai selezionato il sesso!",JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Attenzione!");
+            dialog.setAlwaysOnTop(true); // mostra il dialogo sopra le altre finestre
+            dialog.setVisible(true); // rende visibile il dialogo
+            return;
+        }
+
+        if (tfGiorno.getText().equals("")) {
+            JOptionPane optionPane = new JOptionPane("Non hai inserito il giorno!",JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Attenzione!");
+            dialog.setAlwaysOnTop(true); // mostra il dialogo sopra le altre finestre
+            dialog.setVisible(true); // rende visibile il dialogo
+            return;
+        }
+
+        if (cb.getSelectedIndex() == 0) {
+            JOptionPane optionPane = new JOptionPane("Non hai selezionato il mese!",JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Attenzione!");
+            dialog.setAlwaysOnTop(true); // mostra il dialogo sopra le altre finestre
+            dialog.setVisible(true); // rende visibile il dialogo
+            return;
+        }
+
+        if (tfAnno.getText().equals("")) {
+            JOptionPane optionPane = new JOptionPane("Non hai inserito l'anno!",JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Attenzione!");
+            dialog.setAlwaysOnTop(true); // mostra il dialogo sopra le altre finestre
+            dialog.setVisible(true); // rende visibile il dialogo
+            return;
+        }
+
+        if (tfComune.getText().equals("")) {
+            JOptionPane optionPane = new JOptionPane("Non hai inserito il comune!",JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Attenzione!");
+            dialog.setAlwaysOnTop(true); // mostra il dialogo sopra le altre finestre
+            dialog.setVisible(true); // rende visibile il dialogo
+            return;
+        }
+
         String cognome = tfCognome.getText();
         String nome = tfNome.getText();
         String sesso = "";
@@ -105,7 +162,7 @@ public class CodiceFiscale extends JFrame implements ActionListener {
             sesso = "F";
         }
         int dataGiorno = Integer.parseInt(tfGiorno.getText());
-        int dataMese = cb.getSelectedIndex() + 1;
+        int dataMese = cb.getSelectedIndex();
         int dataAnno = Integer.parseInt(tfAnno.getText());
         String comune = tfComune.getText();
 
@@ -255,15 +312,16 @@ public class CodiceFiscale extends JFrame implements ActionListener {
 
         // CODICE CATASTALE
         String codCat="";
+        comune = comune.toUpperCase();
 
         try {
             Scanner fileScanner = new Scanner(new File("comuni.txt"));
             fileScanner.useDelimiter("\r\n");
             while(fileScanner.hasNext()) {
                 String s1 = fileScanner.nextLine();
-                String s2 = s1.substring(0,s1.indexOf('-')-1);
+                String s2 = s1.substring(0, s1.indexOf('-') - 1);
                 if(s2.equalsIgnoreCase(comune)) {
-                    codCat = s1.substring(s1.lastIndexOf(' ')+1);
+                    codCat = s1.substring(s1.lastIndexOf(' ') + 1);
                     break;
                 }
             }
