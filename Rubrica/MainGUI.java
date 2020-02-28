@@ -53,7 +53,7 @@ public class MainGUI extends JFrame {
                     out.close();
                 }
                 catch (IOException ex) {
-                    System.out.println(ex);
+                    ex.printStackTrace();
                 }
 
             }
@@ -66,7 +66,6 @@ public class MainGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new RubricaGUI();
-
             }
         });
 
@@ -79,10 +78,10 @@ public class MainGUI extends JFrame {
         add(aggiungiContatto);
         add(visualizzaRubrica);
 
-        setSize(375, 500);
+        setSize(375, 340);
         setLayout(null);
         setVisible(true);
-        setResizable(true);
+        setResizable(false);
 
     }
 }
