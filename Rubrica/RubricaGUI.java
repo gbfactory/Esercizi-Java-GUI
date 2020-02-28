@@ -27,8 +27,6 @@ public class RubricaGUI extends JFrame {
 
         ArrayList<Contatto> dataFromFile = new ArrayList<Contatto>();
 
-        System.out.println("ciao");
-
         try {
             Scanner fileScanner = new Scanner(new File("./src/rubrica/rubrica.txt"));
             fileScanner.useDelimiter("\r\n");
@@ -38,7 +36,7 @@ public class RubricaGUI extends JFrame {
             }
             fileScanner.close();
         } catch(IOException ex) {
-            System.out.println(ex);
+            ex.printStackTrace();
         }
 
         for (Contatto c : dataFromFile) {
@@ -59,13 +57,18 @@ public class RubricaGUI extends JFrame {
             @Override
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2) {
-                    String selData = (String) table.getValueAt(table.getSelectedRow(), 0);
-                    System.out.println(selData);
+                    String nomeSelected = (String) table.getValueAt(table.getSelectedRow(), 0);
+                    String cognomeSelected = (String) table.getValueAt(table.getSelectedRow(), 1);
+                    String numeroSelected = (String) table.getValueAt(table.getSelectedRow(), 2);
+                    System.out.println(nomeSelected + " " + cognomeSelected + " " + numeroSelected);
+                    new ContattoGUI(nomeSelected, cognomeSelected, numeroSelected);
+                    setVisible(false);
+                    dispose();
                 }
             }
 
         });
-        
+
         JScrollPane js=new JScrollPane(table);
 
         add(js);
