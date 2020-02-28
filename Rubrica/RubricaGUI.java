@@ -1,8 +1,6 @@
 package rubrica;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -23,7 +21,7 @@ public class RubricaGUI extends JFrame {
         DefaultTableModel tableModel = new DefaultTableModel(col, 0) {
             @Override
             public boolean isCellEditable(int i, int i1) {
-                return false; //To change body of generated methods, choose Tools | Templates.
+                return false;
             }
         };
 
@@ -67,34 +65,7 @@ public class RubricaGUI extends JFrame {
             }
 
         });
-
-/*
-        jt.setCellSelectionEnabled(true);
-
-        ListSelectionModel select = jt.getSelectionModel();
-
-        select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-        select.addListSelectionListener(new ListSelectionListener() {
-
-            public void valueChanged(ListSelectionEvent e) {
-                String Data = null;
-                int[] row = jt.getSelectedRows();
-                int[] columns = jt.getSelectedColumns();
-                for (int i = 0; i < row.length; i++) {
-                    for (int j = 0; j < columns.length; j++) {
-                        Data = (String) jt.getValueAt(row[i], columns[j]);
-                    }
-                }
-                System.out.println("Table element selected is: " + Data);
-            }
-        });
-
-        JScrollPane sp = new JScrollPane(jt);
-
-        add(sp);
-*/
-
+        
         JScrollPane js=new JScrollPane(table);
 
         add(js);
