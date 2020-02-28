@@ -14,4 +14,4 @@ Ogni volta che il tasto "GIOCA" viene premuto vengono generati 3 numeri casuali,
 ## Rubrica Telefonica
 Rubrica telefonica con possibilità di aggiungere, rimuovere e modificare i contatti. I contatti vengono salvati all'interno di un file di testo (.txt). Per accedere al menù di modifica contatto è necessario fare doppio-click sopra il contatto che si desidera modificare nella pagina di visualizzazione della rubrica.
 
-![RubricaTelefonica](https://imgur.com/a/6T5luxx)
+![RubricaTelefonica](https://i.imgur.com/B7lMAUC.png)
