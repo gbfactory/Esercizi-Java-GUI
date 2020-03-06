@@ -44,6 +44,30 @@ public class MainGUI extends JFrame {
                 String cognome = tfCognome.getText();
                 String telefono = tfTelefono.getText();
 
+                if (nome == null || nome.isEmpty()) {
+                    JOptionPane optionPane = new JOptionPane("Il nome inserito non è valido!",JOptionPane.ERROR_MESSAGE);
+                    JDialog dialog = optionPane.createDialog("Rubrica");
+                    dialog.setAlwaysOnTop(true);
+                    dialog.setVisible(true);
+                    return;
+                }
+
+                if (cognome == null || cognome.isEmpty()) {
+                    JOptionPane optionPane = new JOptionPane("Il cognome inserito non è valido!",JOptionPane.ERROR_MESSAGE);
+                    JDialog dialog = optionPane.createDialog("Rubrica");
+                    dialog.setAlwaysOnTop(true);
+                    dialog.setVisible(true);
+                    return;
+                }
+
+                if (telefono == null || telefono.isEmpty() || telefono.length() < 7 || telefono.length() > 10) {
+                    JOptionPane optionPane = new JOptionPane("Il numero inserito non è valido!",JOptionPane.ERROR_MESSAGE);
+                    JDialog dialog = optionPane.createDialog("Rubrica");
+                    dialog.setAlwaysOnTop(true);
+                    dialog.setVisible(true);
+                    return;
+                }
+
                 String data = nome + "--" + cognome + "--" + telefono;
 
                 try {
