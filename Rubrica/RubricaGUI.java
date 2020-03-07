@@ -1,7 +1,14 @@
 package rubrica;
 
+import com.sun.rowset.internal.Row;
+
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -11,7 +18,7 @@ import java.util.Scanner;
 
 public class RubricaGUI extends JFrame {
 
-    JTable tabella;
+    private JTable tabella;
 
     RubricaGUI() {
         super("Visualizza Rubrica");
@@ -47,9 +54,7 @@ public class RubricaGUI extends JFrame {
             Object[] data = {nomeContatto, cognomeContatto, telefonoContatto};
 
             tableModel.addRow(data);
-
         }
-
 
         JTable table = new JTable(tableModel);
 
@@ -60,7 +65,7 @@ public class RubricaGUI extends JFrame {
                     String nomeSelected = (String) table.getValueAt(table.getSelectedRow(), 0);
                     String cognomeSelected = (String) table.getValueAt(table.getSelectedRow(), 1);
                     String numeroSelected = (String) table.getValueAt(table.getSelectedRow(), 2);
-                    System.out.println(nomeSelected + " " + cognomeSelected + " " + numeroSelected);
+                    //System.out.println(nomeSelected + " " + cognomeSelected + " " + numeroSelected);
                     new ContattoGUI(nomeSelected, cognomeSelected, numeroSelected);
                     setVisible(false);
                     dispose();
@@ -69,13 +74,48 @@ public class RubricaGUI extends JFrame {
 
         });
 
-        JScrollPane js=new JScrollPane(table);
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 
-        add(js);
+        table.setRowSorter(rowSorter);
+
+        JTextField ricerca = new JTextField();
 
         setSize(700, 700);
         setVisible(true);
         setResizable(false);
+        setLayout(new BorderLayout());
+
+        add(new JScrollPane(table), BorderLayout.CENTER);
+        add(ricerca, BorderLayout.SOUTH);
+
+        ricerca.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = ricerca.getText();
+
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = ricerca.getText();
+
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Errore");
+            }
+        });
 
     }
 }
