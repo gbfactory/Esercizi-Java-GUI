@@ -83,18 +83,31 @@ public class MainGUI extends JFrame {
                      * Se si prova a leggere un file serializzato in modalità append vengono trovati molteplici header
                      * e da errore!!!
                      *
-                     * TODO: Controllare se il file è vuoto o no, utilizzare quindi la classe opportuna.
+                     * Implementato in data 29 03 2020 - Controllare se il file è vuoto o no, utilizzare quindi la classe opportuna.
                      *
                      * Un'altra soluzione è creare un primo contatto e nasconderlo dalla visualizzazione rubrica
                      */
 
-                    //ObjectOutputStream o = new ObjectOutputStream(f);
-                    AppendingObjectOutputStream o = new AppendingObjectOutputStream(f);
+                    if ((new File("rubricaOggetti.txt")).length() == 0) {
+                        System.out.println("file vuoto");
+                        ObjectOutputStream o = new ObjectOutputStream(f);
 
-                    o.writeObject(c);
+                        o.writeObject(c);
 
-                    o.flush();
-                    o.close();
+                        o.flush();
+                        o.close();
+
+                    } else {
+                        System.out.println("file pieno");
+                        AppendingObjectOutputStream o = new AppendingObjectOutputStream(f);
+
+                        o.writeObject(c);
+
+                        o.flush();
+                        o.close();
+
+                    }
+
                     f.flush();
                     f.close();
                 } catch (FileNotFoundException err) {
@@ -137,6 +150,8 @@ public class MainGUI extends JFrame {
         setLayout(null);
         setVisible(true);
         setResizable(false);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
 }
