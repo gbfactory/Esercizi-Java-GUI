@@ -18,4 +18,5 @@ Rubrica telefonica con possibilità di aggiungere, rimuovere e modificare i cont
 
 ## Gioco del Memory
 Gioco del memory in Java Swing con contatore dei tentativi, cambiare il numero di carte è semplice dato che è semplicemente una variabile nel codice. In futuro potrebbe essere aggiunto un menu di impostazioni con la possibilità di selezionare il numero delle carte e i tentativi massimi per il gioco. Altre funzioni da aggiungere potrebbero essere un tasto di Reset o un cronometro che mostra il tempo di gioco.
+
 ![GiocoMemory](https://i.imgur.com/InX8xaB.png)
