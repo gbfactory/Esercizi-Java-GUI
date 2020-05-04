@@ -15,3 +15,7 @@ Ogni volta che il tasto "GIOCA" viene premuto vengono generati 3 numeri casuali,
 Rubrica telefonica con possibilità di aggiungere, rimuovere e modificare i contatti. I contatti vengono salvati all'interno di un file di testo (.txt). Per accedere al menù di modifica contatto è necessario fare doppio-click sopra il contatto che si desidera modificare nella pagina di visualizzazione della rubrica. E' possibile cercare i contatti presenti tramite la barra di ricerca posta nella parte inferiore della finestra Rubrica. 
 
 ![RubricaTelefonica](https://i.imgur.com/B7lMAUC.png)
+
+## Gioco del Memory
+Gioco del memory in Java Swing con contatore dei tentativi, cambiare il numero di carte è semplice dato che è semplicemente una variabile nel codice. In futuro potrebbe essere aggiunto un menu di impostazioni con la possibilità di selezionare il numero delle carte e i tentativi massimi per il gioco. Altre funzioni da aggiungere potrebbero essere un tasto di Reset o un cronometro che mostra il tempo di gioco.
+![GiocoMemory](https://i.imgur.com/InX8xaB.png)
