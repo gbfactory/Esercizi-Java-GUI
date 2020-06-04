@@ -20,3 +20,14 @@ Rubrica telefonica con possibilità di aggiungere, rimuovere e modificare i cont
 Gioco del memory in Java Swing con contatore dei tentativi, cambiare il numero di carte è semplice dato che è semplicemente una variabile nel codice. In futuro potrebbe essere aggiunto un menu di impostazioni con la possibilità di selezionare il numero delle carte e i tentativi massimi per il gioco. Altre funzioni da aggiungere potrebbero essere un tasto di Reset o un cronometro che mostra il tempo di gioco.
 
 ![GiocoMemory](https://i.imgur.com/InX8xaB.png)
+
+## Timer
+Countdown che permette di inserire un tempo in secondi e fare il conto alla rovescia fino a zero. Presenta un pulsante per avviare il timer e uno per resettarlo. Inoltre è possibile attivare o disattivare l'audio riprodotto al passare degli ultimi secondi, con numeri colorati in rosso.
+
+![Timer](https://i.imgur.com/YLrDnmv.gif)
+
+## Corsa
+Semplice gioco della corsa con 8 gareggianti. Il gioco presenta un pulsante per avviare la gara, quando uno degli 8 concorrenti raggiunge la fine il gioco si ferma. Il pulsante permette di far ripartire il gioco dall'inizio in qualsiasi momento.
+Sono inoltre presenti effetti sonori all'avvio e alla fine della corsa.
+
+![Corsa](https://i.imgur.com/RBKM5Sc.gif)
